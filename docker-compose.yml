@@ -2,6 +2,7 @@ version: '3'
 services:
   postgres:
     image: 'postgres:latest'
+    restart: always
   redis:
     image: 'redis:latest'
   nginx:
@@ -40,3 +41,6 @@ services:
     volumes:
       - /app/node_modules
       - ./worker:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
